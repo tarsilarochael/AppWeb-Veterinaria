@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import 'bootstrap/dist/css/bootstrap.min.css'; // IMPORTANTE!
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -15,23 +16,20 @@ const LoginPage = () => {
     setLoading(true);
     
     try {
-      // Simulação de login (2 segundos)
+      // Simulação de login
       await new Promise(resolve => setTimeout(resolve, 2000));
       
-      // Mostrar mensagem de sucesso
       toast.success('Login realizado com sucesso!');
       
-      // Salvar autenticação (simulado)
       localStorage.setItem('authToken', 'simulated-token-123');
       localStorage.setItem('user', JSON.stringify({
         id: 1,
         name: 'Thiago Pereira',
         email: formData.email,
-        role: 'Professor',
-        instituicao: 'CEFET-MG / UFMG'
+        role: 'aluno',
+        instituicao: 'CEFET-MG'
       }));
       
-      // Redirecionar após 1 segundo
       setTimeout(() => {
         navigate('/dashboard');
       }, 1000);
@@ -52,7 +50,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="login-container" style={{
+    <div style={{
       minHeight: '100vh',
       background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
       display: 'flex',
@@ -60,7 +58,7 @@ const LoginPage = () => {
       justifyContent: 'center',
       padding: '1rem'
     }}>
-      <div className="login-card" style={{
+      <div style={{
         background: 'white',
         borderRadius: '12px',
         padding: '2.5rem',
@@ -69,29 +67,52 @@ const LoginPage = () => {
         boxShadow: '0 20px 40px rgba(0,0,0,0.1)'
       }}>
         {/* Cabeçalho */}
-        <div className="text-center mb-4">
-          <h1 className="text-primary fw-bold mb-2">Cell.IA</h1>
+        <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
+          <h1 style={{ 
+            color: '#667eea', 
+            fontWeight: 'bold', 
+            marginBottom: '0.5rem',
+            fontSize: '2.5rem'
+          }}>
+            Cell.IA
+          </h1>
         </div>
 
         {/* Título do formulário */}
-        <h2 className="text-center mb-3">Login</h2>
-        
+        <h2 style={{ textAlign: 'center', marginBottom: '1rem' }}>Login</h2>
 
-        {/* Alerta informativo (do TCC) */}
-        <div className="alert alert-info mb-4">
-          <small>
-            <strong>Nota (TCC):</strong> A autenticação via Google foi removida para 
-            maior controle pelo banco de dados.
-          </small>
+        {/* Alerta informativo */}
+        <div style={{
+          backgroundColor: '#d1ecf1',
+          color: '#0c5460',
+          padding: '0.75rem',
+          borderRadius: '0.375rem',
+          marginBottom: '1.5rem',
+          fontSize: '0.875rem'
+        }}>
+          <strong>Nota:</strong> A autenticação via Google foi removida para 
+          maior controle pelo banco de dados.
         </div>
 
         {/* Formulário */}
         <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label className="form-label">Email</label>
+          <div style={{ marginBottom: '1rem' }}>
+            <label style={{ 
+              display: 'block', 
+              marginBottom: '0.5rem',
+              fontWeight: '500'
+            }}>
+              Email
+            </label>
             <input
               type="email"
-              className="form-control"
+              style={{
+                width: '100%',
+                padding: '0.5rem 0.75rem',
+                border: '1px solid #ced4da',
+                borderRadius: '0.375rem',
+                fontSize: '1rem'
+              }}
               name="email"
               value={formData.email}
               onChange={handleChange}
@@ -101,11 +122,23 @@ const LoginPage = () => {
             />
           </div>
 
-          <div className="mb-4">
-            <label className="form-label">Senha</label>
+          <div style={{ marginBottom: '1.5rem' }}>
+            <label style={{ 
+              display: 'block', 
+              marginBottom: '0.5rem',
+              fontWeight: '500'
+            }}>
+              Senha
+            </label>
             <input
               type="password"
-              className="form-control"
+              style={{
+                width: '100%',
+                padding: '0.5rem 0.75rem',
+                border: '1px solid #ced4da',
+                borderRadius: '0.375rem',
+                fontSize: '1rem'
+              }}
               name="password"
               value={formData.password}
               onChange={handleChange}
@@ -117,23 +150,50 @@ const LoginPage = () => {
 
           <button
             type="submit"
-            className="btn btn-primary w-100 py-2 fw-bold"
+            style={{
+              width: '100%',
+              padding: '0.5rem 1rem',
+              backgroundColor: '#667eea',
+              color: 'white',
+              border: 'none',
+              borderRadius: '0.375rem',
+              fontWeight: 'bold',
+              fontSize: '1rem',
+              cursor: loading ? 'not-allowed' : 'pointer',
+              opacity: loading ? 0.7 : 1
+            }}
             disabled={loading}
           >
             {loading ? (
               <>
-                <span className="spinner-border spinner-border-sm me-2"></span>
+                <span style={{
+                  display: 'inline-block',
+                  width: '1rem',
+                  height: '1rem',
+                  border: '2px solid white',
+                  borderTopColor: 'transparent',
+                  borderRadius: '50%',
+                  animation: 'spin 1s linear infinite',
+                  marginRight: '0.5rem'
+                }}></span>
                 Entrando...
               </>
             ) : 'Entrar no Sistema'}
           </button>
 
-          <div className="text-center mt-4">
-            <small className="text-muted">
+          <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
+            <small style={{ color: '#6c757d' }}>
               Não tem conta?{' '}
               <button 
-                className="btn btn-link p-0 text-primary fw-bold"
-                style={{ textDecoration: 'none' }}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  color: '#667eea',
+                  fontWeight: 'bold',
+                  padding: 0,
+                  textDecoration: 'none',
+                  cursor: 'pointer'
+                }}
                 onClick={(e) => {
                   e.preventDefault();
                   toast.info('Entre em contato com o administrador para solicitar acesso.');
@@ -146,15 +206,41 @@ const LoginPage = () => {
         </form>
 
         {/* Rodapé */}
-        <div className="text-center mt-5 pt-3 border-top">
-          <small className="text-muted d-block">
+        <div style={{ 
+          textAlign: 'center', 
+          marginTop: '2rem', 
+          paddingTop: '1rem',
+          borderTop: '1px solid #dee2e6'
+        }}>
+          <small style={{ color: '#6c757d', display: 'block' }}>
             Versão 2.0 • Migrado de Flutter para React
-          </small>
-          <small className="text-muted">
-           Engenharia de Computação CEFET-MG
           </small>
         </div>
       </div>
+
+      {/* Adicionar animação do spinner */}
+      <style>{`
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+        
+        /* Responsividade */
+        @media (max-width: 576px) {
+          .login-card {
+            padding: 1.5rem;
+            margin: 0 1rem;
+          }
+          
+          h1 {
+            font-size: 2rem !important;
+          }
+          
+          h2 {
+            font-size: 1.5rem !important;
+          }
+        }
+      `}</style>
     </div>
   );
 };

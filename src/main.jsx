@@ -1,7 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
-import 'bootstrap/dist/css/bootstrap.min.css'  // Se for usar Bootstrap CSS
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap-icons/font/bootstrap-icons.css';  // Se for usar Bootstrap CSS
 import './index.css'  // Se tiver este arquivo
 
 ReactDOM.createRoot(document.getElementById('root')).render(
