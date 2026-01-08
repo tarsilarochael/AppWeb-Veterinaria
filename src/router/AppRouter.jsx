@@ -35,18 +35,10 @@ function AppRouter() {
         </ProtectedRoute>
       } />
       
-      <Route path="/results" element={
-        <ProtectedRoute>
-          <ResultsPage />
-        </ProtectedRoute>
-      } />
-      
+      {/* CORREÇÃO: removi a rota /results sem parâmetro */}
       <Route path="/results/:id" element={
         <ProtectedRoute>
-          <div className="container mt-5">
-            <h1>Detalhe do Resultado</h1>
-            <p>Página em desenvolvimento</p>
-          </div>
+          <ResultsPage />
         </ProtectedRoute>
       } />
       
