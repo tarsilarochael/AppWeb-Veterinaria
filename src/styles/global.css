@@ -1,0 +1,75 @@
+/* Estilos globais */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+/* Dashboard */
+.dashboard-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.hover-shadow {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.hover-shadow:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1) !important;
+}
+
+/* Tabelas */
+.table-hover tbody tr:hover {
+  background-color: rgba(76, 90, 242, 0.05);
+}
+
+/* Badges */
+.badge {
+  padding: 0.5em 0.8em;
+  font-weight: 500;
+}
+
+/* Cards */
+.card {
+  border: 1px solid rgba(0,0,0,0.075);
+}
+
+/* Botões */
+.btn-primary {
+  background-color: #4c5af2 !important;
+  border-color: #4c5af2 !important;
+}
+
+.btn-primary:hover {
+  background-color: #3a4af0 !important;
+  border-color: #3a4af0 !important;
+}
+
+.btn-outline-primary {
+  color: #4c5af2;
+  border-color: #4c5af2;
+}
+
+.btn-outline-primary:hover {
+  background-color: #4c5af2;
+  border-color: #4c5af2;
+}
+
+/* Navbar */
+.navbar-dark.bg-primary {
+  background-color: #4c5af2 !important;
+}
+
+/* Footer */
+footer {
+  margin-top: auto;
+}
