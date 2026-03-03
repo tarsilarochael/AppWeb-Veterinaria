@@ -211,13 +211,11 @@ const DashboardPage = () => {
                 <p className="card-text text-muted">
                   Envie imagens já capturadas da galeria do dispositivo para análise.
                 </p>
-                <button 
-                  className="btn btn-success btn-lg w-100"
-                  onClick={() => toast.info('Funcionalidade em desenvolvimento')}
-                >
+                {/* 👇 Aqui está a alteração! Trocamos o button por um Link para a Galeria */}
+                <Link to="/gallery" className="btn btn-success btn-lg w-100">
                   <Upload className="me-2" />
-                  Fazer Upload
-                </button>
+                  Acessar Galeria
+                </Link>
               </div>
             </div>
           </div>

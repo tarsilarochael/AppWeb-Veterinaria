@@ -4,6 +4,8 @@ import LoginPage from '../pages/Auth/LoginPage';
 import DashboardPage from '../pages/Dashboard/DashboardPage';
 import CameraPage from '../pages/Camera/CameraPage';
 import ResultsPage from '../pages/Results/ResultsPage';
+// 👇 1. Importámos a página da Galeria aqui!
+import GalleryPage from '../pages/Gallery/GalleryPage';
 
 // Componente para proteger rotas
 const ProtectedRoute = ({ children }) => {
@@ -32,6 +34,13 @@ function AppRouter() {
       <Route path="/camera" element={
         <ProtectedRoute>
           <CameraPage />
+        </ProtectedRoute>
+      } />
+
+      {/* 👇 2. Adicionámos a rota da Galeria protegida aqui! */}
+      <Route path="/gallery" element={
+        <ProtectedRoute>
+          <GalleryPage />
         </ProtectedRoute>
       } />
       
