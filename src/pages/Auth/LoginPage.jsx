@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import 'bootstrap/dist/css/bootstrap.min.css'; // IMPORTANTE!
+import 'bootstrap/dist/css/bootstrap.min.css';
+// Importando o componente do Google que criamos!
+import GoogleSignIn from '../../components/auth/GoogleSignIn';
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -24,7 +26,7 @@ const LoginPage = () => {
       localStorage.setItem('authToken', 'simulated-token-123');
       localStorage.setItem('user', JSON.stringify({
         id: 1,
-        name: 'Thiago Pereira',
+        name: 'Aluno',
         email: formData.email,
         role: 'aluno',
         instituicao: 'CEFET-MG'
@@ -81,18 +83,6 @@ const LoginPage = () => {
         {/* Título do formulário */}
         <h2 style={{ textAlign: 'center', marginBottom: '1rem' }}>Login</h2>
 
-        {/* Alerta informativo */}
-        <div style={{
-          backgroundColor: '#d1ecf1',
-          color: '#0c5460',
-          padding: '0.75rem',
-          borderRadius: '0.375rem',
-          marginBottom: '1.5rem',
-          fontSize: '0.875rem'
-        }}>
-          <strong>Nota:</strong> A autenticação via Google foi removida para 
-          maior controle pelo banco de dados.
-        </div>
 
         {/* Formulário */}
         <form onSubmit={handleSubmit}>
@@ -181,6 +171,9 @@ const LoginPage = () => {
             ) : 'Entrar no Sistema'}
           </button>
 
+          {/* Renderizando o componente de login do Google bem aqui! */}
+          <GoogleSignIn />
+
           <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
             <small style={{ color: '#6c757d' }}>
               Não tem conta?{' '}
@@ -213,7 +206,7 @@ const LoginPage = () => {
           borderTop: '1px solid #dee2e6'
         }}>
           <small style={{ color: '#6c757d', display: 'block' }}>
-            Versão 2.0 • Migrado de Flutter para React
+            Versão 2.0
           </small>
         </div>
       </div>

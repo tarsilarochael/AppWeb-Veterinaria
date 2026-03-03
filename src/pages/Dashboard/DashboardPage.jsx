@@ -299,32 +299,6 @@ const DashboardPage = () => {
             </div>
           </div>
         </div>
-
-        {/* Informações do sistema */}
-        <div className="row mt-4">
-          <div className="col-12">
-            <div className="alert alert-info">
-              <h6 className="alert-heading">
-                <i className="bi bi-info-circle me-2"></i>
-                Informações do Sistema (TCC)
-              </h6>
-              <ul className="mb-0">
-                <li>
-                  <strong>Arquitetura:</strong> Frontend React + Backend NestJS + Python (Detectron2)
-                </li>
-                <li>
-                  <strong>Processamento:</strong> Imagens são enviadas para fila de jobs no AWS Lambda
-                </li>
-                <li>
-                  <strong>Classificação:</strong> Utiliza Fast R-CNN para detecção de leucócitos
-                </li>
-                <li>
-                  <strong>Status possíveis:</strong> Aguardando → Processando → Finalizado
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
       </div>
 
       {/* Footer */}
